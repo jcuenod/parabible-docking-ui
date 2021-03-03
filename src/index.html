@@ -1,22 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>This is the title of the webpage!</title>
-    <style type="text/css">
-      body {
-        padding: 0;
-        margin: 0;
-      }
-      .dock-content .dock-tabpane {
-        overflow: auto !important;
-      }
-      ::-webkit-scrollbar {
-          width: 4px;
-      }
-    </style>
-  </head>
-  <body>
+	<head>
+		<title>This is the title of the webpage!</title>
+		<link rel="stylesheet" href="index.css" />
+		<style type="text/css">
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			.dock-layout {
+				background:rgba(243, 244, 246, 1);
+			}
+			.dock-content .dock-tabpane {
+				overflow: auto !important;
+			}
+		</style>
+	</head>
+	<body>
 		<div id="App"></div>
 		<script type="module" src="main.js"></script>
-  </body>
+	</body>
 </html>
