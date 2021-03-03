@@ -25,12 +25,14 @@ window.chapterTabs = {
 
 let mainTab = {
 	closable: false,
+	cached: true,
 	title: <ChapterTabTitle id={"chTab1"} />,
 	content: <Chapter id={"chTab1"} />,
 	id: 'chTab1'
 }
 let mainTab2 = {
 	closable: false,
+	cached: true,
 	title: <ChapterTabTitle id={"chTab2"} />,
 	content: <Chapter id={"chTab2"} />,
 	id: 'chTab2'
