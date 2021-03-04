@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import fetchChapter from "../util/chapter"
+import VerseManager from "../util/VerseManager"
 import ActiveWid from "./ActiveWid"
 
 const wordClasses = `
@@ -58,16 +58,11 @@ const Verse = (activeWid) => ({ rid, wlc }) => (
 const Chapter = ({ id }) => {
 	const [verseArray, setVerseArray] = useState([])
 	const [activeWid, setActiveWid] = useState(ActiveWid.activeWid)
-	useEffect(() => ActiveWid.subscribe(setActiveWid), [])
-	if (verseArray.length === 0) {
-		const { reference } = window.chapterTabs[id]
-		console.log(window.chapterTabs[id].reference)
-		console.log(reference)
-		fetchChapter(reference).then((response) => {
-			console.log(response)
-			setVerseArray(response.data.text)
-		})
-	}
+	useEffect(async () => {
+		ActiveWid.subscribe(setActiveWid)
+		const data = await VerseManager.getChapter(window.chapterTabs[id].reference)
+		setVerseArray(data.text)
+	}, [])
 	return (
 		<div
 			className="p-2 text-3xl max-w-screen-md m-auto"
