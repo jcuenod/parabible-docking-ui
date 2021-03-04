@@ -50,7 +50,16 @@ let box = {
 				mode: 'vertical',
 				children: [
 					{
-						tabs: [{ title: "Morphology", content: <Morphology />, id: 'm1' }, { title: "Search", content: <div>search terms...</div>, id: 's1' }],
+						tabs: [{
+							cached: true,
+							title: "Morphology",
+							content: <Morphology />,
+							id: 'm1'
+						}, {
+							title: "Search",
+							content: <div>search terms...</div>,
+							id: 's1'
+						}],
 					},
 					{
 						tabs: [mainTab2, { ...tab, id: 't4' }, { ...tab, id: 't5' }]
