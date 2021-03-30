@@ -1,8 +1,9 @@
 {
     "categories": {
         "sp": "Part of Speech",
-        "vs": "Stem",
+        "stem": "Stem",
         "vt": "Tense",
+        "realized_lexeme": "Realized Lexeme",
         "lex": "Sense Lexeme",
         "lex_utf8": "Sense Lexeme",
         "g_cons_utf8": "Inflected Consonants",
@@ -16,7 +17,7 @@
         "prs_gn": "Prn. sfx Gender",
         "prs_nu": "Prn. sfx Number",
         "prs_ps": "Prn. sfx Person",
-        "st": "State",
+        "state": "State",
         "accent": "Accent",
         "accent_quality": "Accent Type",
         "is_definite": "Definite",
@@ -31,7 +32,7 @@
         "v": "Verse",
         "lexeme": "Lexeme",
         "morphology": "Morphology* (LXX)",
-        "pos": "Part of Speech",
+        "part_of_speech": "Part of Speech",
         "tense": "Tense",
         "voice": "Voice",
         "mood": "Mood",
@@ -78,22 +79,9 @@
         "unknown": "Unknown",
         "NA": "NA"
     },
-    "gn": {
-        "m": "Masculine",
-        "f": "Feminine",
-        "unknown": "Unknown",
-        "NA": "NA"
-    },
     "prs_gn": {
         "m": "Masculine",
         "f": "Feminine",
-        "unknown": "Unknown",
-        "NA": "NA"
-    },
-    "ps": {
-        "p1": "First",
-        "p2": "Second",
-        "p3": "Third",
         "unknown": "Unknown",
         "NA": "NA"
     },
@@ -104,18 +92,7 @@
         "unknown": "Unknown",
         "NA": "NA"
     },
-    "vt": {
-        "perf": "Perfect",
-        "impf": "Imperfect",
-        "wayq": "Wayyiqtol",
-        "impv": "Imperative",
-        "infa": "Infinitive (Absolute)",
-        "infc": "Infinitive (Construct)",
-        "ptca": "Participle",
-        "ptcp": "Participle (Passive)",
-        "NA": "NA"
-    },
-    "vs": {
+    "stem": {
         "hif": "Hif‘il (H)",
         "hit": "Hitpa“el (H)",
         "htpo": "Hitpo“el (H)",
@@ -143,13 +120,14 @@
         "pasq": "Passiveqal (Ar)",
         "NA": "NA"
     },
-    "st": {
+    "state": {
         "a": "Absolute",
         "c": "Construct",
         "e": "Emphatic",
         "NA": "NA"
     },
-    "pos": {
+    "part_of_speech": {
+        "subs": "Noun",
         "noun": "Noun",
         "verb": "Verb",
         "adj": "Adjective",
@@ -172,7 +150,14 @@
         "fut": "Future",
         "aor": "Aorist",
         "perf": "Perfect",
-        "plupf": "Pluperfect"
+        "plupf": "Pluperfect",
+        "wayq": "Wayyiqtol",
+        "impv": "Imperative",
+        "infa": "Infinitive (Absolute)",
+        "infc": "Infinitive (Construct)",
+        "ptca": "Participle",
+        "ptcp": "Participle (Passive)",
+        "NA": "NA"
     },
     "voice": {
         "act": "Active",
@@ -188,6 +173,11 @@
         "ptcp": "Participle"
     },
     "person": {
+        "p1": "First",
+        "p2": "Second",
+        "p3": "Third",
+        "unknown": "Unknown",
+        "NA": "NA",
         "1": "First",
         "2": "Second",
         "3": "Third"
@@ -207,7 +197,9 @@
     "gender": {
         "masc": "Masculine",
         "fem": "Feminine",
-        "neut": "Neuter"
+        "neut": "Neuter",
+        "m": "Masculine",
+        "f": "Feminine"
     },
     "degree": {
         "comp": "Comparative",

@@ -1,6 +1,7 @@
 import React from "react"
+import ChapterTabManager from "../util/ChapterTabManager.js"
 
-const referenceFromId = id => window.chapterTabs[id].reference
+const referenceFromId = id => ChapterTabManager.getTab(id).reference
 const chapterTextFromReference = ({ book, chapter }) => `${book} ${chapter}`
 const chapterTitleTextFromId = id => chapterTextFromReference(referenceFromId(id))
 

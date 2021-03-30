@@ -8,35 +8,52 @@ import Chapter from "./components/Chapter.jsx"
 import ChapterTabTitle from "./components/ChapterTabTitle.jsx"
 import Morphology from "./components/Morphology.jsx"
 
-window.chapterTabs = {
-	chTab1: {
-		reference: {
-			book: "Genesis",
-			chapter: 1
-		}
+
+import ChapterTabManager from "./util/ChapterTabManager.js"
+let mainTabId = ChapterTabManager.createChapterTab({
+	reference: {
+		book: "Exodus",
+		chapter: 16
 	},
-	chTab2: {
-		reference: {
-			book: "Genesis",
-			chapter: 2
-		}
-	}
+	modules: ["BHSA"]
+})
+const mainTab = {
+	closable: false,
+	cached: true,
+	title: <ChapterTabTitle id={mainTabId} />,
+	content: <Chapter id={mainTabId} />,
+	id: mainTabId
 }
 
-let mainTab = {
+let mainTabId2 = ChapterTabManager.createChapterTab({
+	reference: {
+		book: "Exodus",
+		chapter: 16
+	},
+	modules: ["LXX"]
+})
+const mainTab2 = {
 	closable: false,
 	cached: true,
-	title: <ChapterTabTitle id={"chTab1"} />,
-	content: <Chapter id={"chTab1"} />,
-	id: 'chTab1'
+	title: <ChapterTabTitle id={mainTabId2} />,
+	content: <Chapter id={mainTabId2} />,
+	id: mainTabId2
 }
-let mainTab2 = {
+let mainTabId3 = ChapterTabManager.createChapterTab({
+	reference: {
+		book: "Exodus",
+		chapter: 16
+	},
+	modules: ["ULT"]
+})
+const mainTab3 = {
 	closable: false,
 	cached: true,
-	title: <ChapterTabTitle id={"chTab2"} />,
-	content: <Chapter id={"chTab2"} />,
-	id: 'chTab2'
+	title: <ChapterTabTitle id={mainTabId3} />,
+	content: <Chapter id={mainTabId3} />,
+	id: mainTabId3
 }
+
 let tab = {
 	title: 'Tab',
 	content: <div>The MT has simply “and Cain said to Abel his brother,” omitting Cain’s words to Abel. It is possible that the elliptical text is original. Perhaps the author uses the technique of aposiopesis, “a sudden silence” to create tension. In the midst of the story the narrator suddenly rushes ahead to what happened in the field. It is more likely that the ancient versions (Smr, LXX, Vulgate, and Syriac), which include Cain’s words, “Let’s go out to the field,” preserve the original reading here. After writing אָחִיו (ʾakhiyv, “his brother”), a scribe’s eye may have jumped to the end of the form בַּשָׂדֶה (bassadeh, “to the field”) and accidentally omitted the quotation. This would be an error of virtual homoioteleuton. In older phases of the Hebrew script the sequence יו (yod-vav) on אָחִיו is graphically similar to the final ה (he) on בַּשָׂדֶה.</div>,
@@ -47,30 +64,32 @@ let box = {
 		mode: 'horizontal',
 		children: [
 			{
-				mode: 'vertical',
-				children: [
-					{
-						tabs: [{
-							cached: true,
-							title: "Morphology",
-							content: <Morphology />,
-							id: 'm1'
-						}, {
-							title: "Search",
-							content: <div>search terms...</div>,
-							id: 's1'
-						}],
-					},
-					{
-						tabs: [mainTab2, { ...tab, id: 't4' }, { ...tab, id: 't5' }]
-					}
-				]
-			},
-			{
-				tabs: [mainTab],
+				tabs: [mainTab,  mainTab2, { ...tab, id: 't4' }, { ...tab, id: 't5' },{
+					cached: true,
+					title: "Morphology",
+					content: <Morphology />,
+					id: 'm1'
+				}, {
+					title: "Search",
+					content: <div>search terms...</div>,
+					id: 's1'
+				}],
 			},
 		]
-	}
+	},
+    floatbox: {
+      mode: 'float',
+      children: [
+        {
+		  id: 'floating_windows',
+          tabs: [mainTab3],
+        }
+      ]
+    },
+	windowbox: {
+		mode: window,
+		children: []
+	},
 };
 
 const savedLayout = {
@@ -133,6 +152,23 @@ const savedLayout = {
 	}
 }
 
+function createTab() {
+	let tabId = ChapterTabManager.createChapterTab({
+		reference: {
+			book: "Romans",
+			chapter: 8
+		},
+		modules: ["Nestle1904"]
+	})
+	return {
+		closable: true,
+		cached: false,
+		title: <ChapterTabTitle id={tabId} />,
+		content: <Chapter id={tabId} />,
+		id: tabId
+	}
+}
+
 class App extends React.Component {
 	constructor(props) {
 		super(props)
@@ -141,7 +177,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		// this.setState(docklayout: box)
-		this.dockLayoutRef.current.loadLayout(savedLayout)
+		// this.dockLayoutRef.current.loadLayout(savedLayout)
 	}
 	componentWillUnmount() {
 		const a = this.dockLayoutRef.current.saveLayout()
@@ -149,7 +185,13 @@ class App extends React.Component {
 	}
 	render() {
 		return <>
-			<Header />
+			<Header addWindow={() => {
+				// Can't figure out how to make this work
+				throw("Not yet functional")
+				const newTab = createTab()
+				console.log(newTab)
+				this.dockLayoutRef.current.dockMove(newTab, 'floating_windows', 'float')
+			}} />
 			<DockLayout
 				ref={this.dockLayoutRef}
 				style={{ "height": "calc(100vh - 48px)" }}
