@@ -8,14 +8,13 @@ module.exports = {
 		/* ... */
 	},
 	plugins: [
-		"@snowpack/plugin-postcss"
-		/* ... */
+		'@snowpack/plugin-postcss',
 	],
 	packageOptions: {
 		/* ... */
 	},
 	devOptions: {
-		/* ... */
+		tailwindConfig: './tailwind.config.js',
 	},
 	buildOptions: {
 		/* ... */
