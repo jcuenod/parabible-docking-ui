@@ -123,11 +123,9 @@
     "state": {
         "a": "Absolute",
         "c": "Construct",
-        "e": "Emphatic",
-        "NA": "NA"
+        "e": "Emphatic"
     },
     "part_of_speech": {
-        "subs": "Noun",
         "noun": "Noun",
         "verb": "Verb",
         "adj": "Adjective",
@@ -140,7 +138,7 @@
         "conj": "Conjunction",
         "part": "Particle",
         "intj": "Interjection",
-        "indc": "Indeclinable Number",
+        "indc": "Indeclinable Letter/Number",
         "prep": "Preposition",
         "adv": "Adverb"
     },

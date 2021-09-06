@@ -1,0 +1,47 @@
+{
+    "byModuleName": {
+        "ULT": "en",
+        "UST": "en",
+        "JPS": "en",
+        "NET": "en",
+        "Nestle1904": "el",
+        "CCAT LXX": "el",
+        "ETCBC BHSA": "he",
+        "CUNPS": "zh",
+        "CUNPT": "zh"
+    },
+    "byModuleId": {
+        "1": "en",
+        "2": "en",
+        "3": "en",
+        "4": "en",
+        "5": "el",
+        "6": "el",
+        "7": "he",
+        "8": "zh",
+        "9": "zh"
+    },
+    "style": {
+        "he": {
+            "fontFamily": "SBL Biblit",
+            "direction": "rtl",
+            "fontSize": "1.875rem",
+            "lineHeight": "1.6"
+        },
+        "el": {
+            "fontFamily": "SBL Biblit",
+            "fontSize": "1.25rem",
+            "lineHeight": "2"
+        },
+        "en": {
+            "fontSize": "1.1rem",
+            "lineHeight": "1.8",
+            "padding": "1.1rem 0.7rem"
+        },
+        "zh": {
+            "fontSize": "1.1rem",
+            "lineHeight": "2.2rem",
+            "padding": "1.1rem 0.7rem"
+        }
+    }
+}

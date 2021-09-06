@@ -6,10 +6,13 @@ const ActiveWid = {
 	},
 	set activeWid(widAndModuleId) {
 		this._activeWid = widAndModuleId
-		this._subscribers.forEach(s => s(widAndModuleId))
+		this._subscribers.forEach((s) => s(widAndModuleId))
 	},
 	subscribe(subscriber) {
 		this._subscribers.push(subscriber)
-	}
+	},
 }
 export default ActiveWid
+
+// try this with recoiljs.org
+

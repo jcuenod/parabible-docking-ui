@@ -2,20 +2,22 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { DockLayout } from "rc-dock"
 import "rc-dock/dist/rc-dock.css"
+import "./App.css"
 
 import Header from "./components/Header.jsx"
 import Chapter from "./components/Chapter.jsx"
 import ChapterTabTitle from "./components/ChapterTabTitle.jsx"
 import Morphology from "./components/Morphology.jsx"
+import SearchTerms from "./components/SearchTerms.jsx"
 
 
 import ChapterTabManager from "./util/ChapterTabManager.js"
 let mainTabId = ChapterTabManager.createChapterTab({
 	reference: {
-		book: "Exodus",
-		chapter: 16
+		book: "Genesis",
+		chapter: 9
 	},
-	modules: ["BHSA"]
+	modules: ["ETCBC BHSA"]
 })
 const mainTab = {
 	closable: false,
@@ -27,10 +29,10 @@ const mainTab = {
 
 let mainTabId2 = ChapterTabManager.createChapterTab({
 	reference: {
-		book: "Exodus",
-		chapter: 16
+		book: "Mark",
+		chapter: 1
 	},
-	modules: ["LXX"]
+	modules: ["Nestle1904"]
 })
 const mainTab2 = {
 	closable: false,
@@ -41,10 +43,10 @@ const mainTab2 = {
 }
 let mainTabId3 = ChapterTabManager.createChapterTab({
 	reference: {
-		book: "Exodus",
-		chapter: 16
+		book: "Genesis",
+		chapter: 1
 	},
-	modules: ["ULT"]
+	modules: ["CCAT LXX"]
 })
 const mainTab3 = {
 	closable: false,
@@ -56,41 +58,41 @@ const mainTab3 = {
 
 let tab = {
 	title: 'Tab',
-	content: <div>The MT has simply “and Cain said to Abel his brother,” omitting Cain’s words to Abel. It is possible that the elliptical text is original. Perhaps the author uses the technique of aposiopesis, “a sudden silence” to create tension. In the midst of the story the narrator suddenly rushes ahead to what happened in the field. It is more likely that the ancient versions (Smr, LXX, Vulgate, and Syriac), which include Cain’s words, “Let’s go out to the field,” preserve the original reading here. After writing אָחִיו (ʾakhiyv, “his brother”), a scribe’s eye may have jumped to the end of the form בַּשָׂדֶה (bassadeh, “to the field”) and accidentally omitted the quotation. This would be an error of virtual homoioteleuton. In older phases of the Hebrew script the sequence יו (yod-vav) on אָחִיו is graphically similar to the final ה (he) on בַּשָׂדֶה.</div>,
+	content: <div className="text-lg">The MT has simply “and Cain said to Abel his brother,” omitting Cain’s words to Abel. It is possible that the elliptical text is original. Perhaps the author uses the technique of aposiopesis, “a sudden silence” to create tension. In the midst of the story the narrator suddenly rushes ahead to what happened in the field. It is more likely that the ancient versions (Smr, LXX, Vulgate, and Syriac), which include Cain’s words, “Let’s go out to the field,” preserve the original reading here. After writing אָחִיו (ʾakhiyv, “his brother”), a scribe’s eye may have jumped to the end of the form בַּשָׂדֶה (bassadeh, “to the field”) and accidentally omitted the quotation. This would be an error of virtual homoioteleuton. In older phases of the Hebrew script the sequence יו (yod-vav) on אָחִיו is graphically similar to the final ה (he) on בַּשָׂדֶה.</div>,
 	closable: true,
-};
+}
 let box = {
 	dockbox: {
 		mode: 'horizontal',
 		children: [
 			{
-				tabs: [mainTab,  mainTab2, { ...tab, id: 't4' }, { ...tab, id: 't5' },{
+				tabs: [mainTab, mainTab2, { ...tab, id: 't4' }, { ...tab, id: 't5' }, {
 					cached: true,
 					title: "Morphology",
 					content: <Morphology />,
 					id: 'm1'
 				}, {
-					title: "Search",
-					content: <div>search terms...</div>,
-					id: 's1'
-				}],
+						title: "Search",
+						content: <SearchTerms />,
+						id: 's1'
+					}],
 			},
 		]
 	},
-    floatbox: {
-      mode: 'float',
-      children: [
-        {
-		  id: 'floating_windows',
-          tabs: [mainTab3],
-        }
-      ]
-    },
+	floatbox: {
+		mode: 'float',
+		children: [
+			{
+				id: 'floating_windows',
+				tabs: [mainTab3],
+			}
+		]
+	},
 	windowbox: {
 		mode: window,
 		children: []
 	},
-};
+}
 
 const savedLayout = {
 	"dockbox": {
@@ -118,7 +120,7 @@ const savedLayout = {
 						"mode": "horizontal",
 						"children": [
 							{ "id": "+5", "size": 551, "tabs": [{ "id": "chTab1" }], "activeId": "chTab1" },
-							{ "id": "+9", "size": 537, "tabs": [{ "id": "chTab2" }], "activeId": "chTab2" }
+							{ "id": "+9", "size": 537, "tabs": [{ "id": "chTab2" }, { "id": "chTab3" }], "activeId": "chTab2" }
 						]
 					}, {
 						"id": "+12",
@@ -177,7 +179,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		// this.setState(docklayout: box)
-		// this.dockLayoutRef.current.loadLayout(savedLayout)
+		this.dockLayoutRef.current.loadLayout(savedLayout)
 	}
 	componentWillUnmount() {
 		const a = this.dockLayoutRef.current.saveLayout()
@@ -185,16 +187,17 @@ class App extends React.Component {
 	}
 	render() {
 		return <>
-			<Header addWindow={() => {
+			{/* <Header addWindow={() => {
 				// Can't figure out how to make this work
-				throw("Not yet functional")
+				throw ("Not yet functional")
 				const newTab = createTab()
 				console.log(newTab)
 				this.dockLayoutRef.current.dockMove(newTab, 'floating_windows', 'float')
-			}} />
+			}} /> */}
 			<DockLayout
 				ref={this.dockLayoutRef}
-				style={{ "height": "calc(100vh - 48px)" }}
+				// style={{ "height": "calc(100vh - 48px)" }}
+				style={{ "height": "100vh " }}
 				defaultLayout={box}
 				dropMode='edge'
 			/>
